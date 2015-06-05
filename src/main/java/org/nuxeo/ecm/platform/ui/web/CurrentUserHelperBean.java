@@ -40,18 +40,6 @@ public class CurrentUserHelperBean implements Serializable {
 
     private static final Log LOG = LogFactory.getLog(CurrentUserHelperBean.class);
 
-//    @In(create = true, required = false)
-//    protected transient CoreSession documentManager;
-//
-//    @In(create = true)
-//    protected NavigationContext navigationContext;
-//
-//    @In(create = true, required = false)
-//    protected transient FacesMessages facesMessages;
-//    
-//    @In(create = true)
-//    protected DocumentsListsManager documentsListsManager;
-
     @In(create = true, required = false)
     protected NuxeoPrincipal currentNuxeoPrincipal;
 
