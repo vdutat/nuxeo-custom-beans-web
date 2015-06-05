@@ -54,7 +54,7 @@ public class CurrentUserHelperBean implements Serializable {
     }
 
     public List<String> getUsersOfCurrentUserGroupsExclude(String...groups) {
-        if (users == null) {
+        if (users == null || users.isEmpty()) {
             users = new ArrayList<String>();
             for (String groupId : currentNuxeoPrincipal.getAllGroups()) {
                 if (Arrays.asList(groups).contains(groupId)) {
@@ -83,4 +83,7 @@ public class CurrentUserHelperBean implements Serializable {
         return users;
     }
 
+    public void clearUsersOfCurrentUserGroups() {
+        users.clear();
+    }
 }
