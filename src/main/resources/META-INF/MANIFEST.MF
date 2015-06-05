@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-Vendor: Nuxeo
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Bundle-Version: 1.0.0
+Bundle-Name: nuxeo-custom-beans-web
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: nuxeo-custom-beans-web
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+
