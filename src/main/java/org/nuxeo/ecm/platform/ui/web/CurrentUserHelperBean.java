@@ -19,6 +19,7 @@ package org.nuxeo.ecm.platform.ui.web;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -61,9 +62,17 @@ public class CurrentUserHelperBean implements Serializable {
     
     @Factory(value = "usersOfCurrentUserGroups", scope = ScopeType.SESSION)
     public List<String> getUsersOfCurrentUserGroups() {
+        return getUsersOfCurrentUserGroupsExclude();
+    }
+
+    public List<String> getUsersOfCurrentUserGroupsExclude(String...groups) {
         if (users == null) {
             users = new ArrayList<String>();
             for (String groupId : currentNuxeoPrincipal.getAllGroups()) {
+                if (Arrays.asList(groups).contains(groupId)) {
+                    LOG.debug("group " + groupId + " excluded");
+                    continue;
+                }
                 List<String> usersInGroups = userManager.getUsersInGroupAndSubGroups(groupId);
                 if (LOG.isTraceEnabled()) {
                     LOG.trace("\tAdding users of group " + groupId);
@@ -72,6 +81,9 @@ public class CurrentUserHelperBean implements Serializable {
                     }
                 }
                 users.addAll(usersInGroups);
+            }
+            if (users.isEmpty()) {
+                users.add(currentNuxeoPrincipal.getName());
             }
         }
         if (LOG.isDebugEnabled()) {
