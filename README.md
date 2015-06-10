@@ -27,5 +27,5 @@ These can be used as a `query parameters` to the NXQL query of a content view. H
 
 All you have to do is:
 
- - to copy the bundle in `nxserver/plugins` or `nxserver/bundles`
+ - copy the bundle in `nxserver/plugins` or `nxserver/bundles`
  - restart the server
