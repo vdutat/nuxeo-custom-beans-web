@@ -20,7 +20,9 @@ package org.nuxeo.ecm.platform.ui.web;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -55,7 +57,7 @@ public class CurrentUserHelperBean implements Serializable {
 
     public List<String> getUsersOfCurrentUserGroupsExclude(String...groups) {
         if (users == null || users.isEmpty()) {
-            users = new ArrayList<String>();
+            Set<String> set = new HashSet<String>();
             for (String groupId : currentNuxeoPrincipal.getAllGroups()) {
                 if (Arrays.asList(groups).contains(groupId)) {
                     LOG.debug("group " + groupId + " excluded");
@@ -68,11 +70,13 @@ public class CurrentUserHelperBean implements Serializable {
                         LOG.trace("\t\t" + user);
                     }
                 }
-                users.addAll(usersInGroups);
+                set.addAll(usersInGroups);
             }
-            if (users.isEmpty()) {
-                users.add(currentNuxeoPrincipal.getName());
+            if (set.isEmpty()) {
+                set.add(currentNuxeoPrincipal.getName());
             }
+            users = new ArrayList<String>(set.size());
+            users.addAll(set);
         }
         if (LOG.isDebugEnabled()) {
             LOG.debug("usersOfCurrentUserGroups contains " + users.size() + " users");
