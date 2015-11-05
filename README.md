@@ -71,6 +71,10 @@ After renamimg a document using the contextual menu in a content view, it could 
 
 Solution for [SUPNXP-14654 Filter in studio](https://jira.nuxeo.com/browse/SUPNXP-14654)
 
+### `tagActions` bean's override
+
+Solution for [SUPNXP-15026](https://jira.nuxeo.com/browse/SUPNXP-15026).
+Listing of documents with a selected tag only shows "non-version" documents.
 
 ## Building
 
