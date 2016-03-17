@@ -9,7 +9,7 @@
   </parent>
   <groupId>org.nuxeo.ecm.ui.web</groupId>
   <artifactId>nuxeo-custom-beans-web</artifactId>
-  <version>1.0.4</version>
+  <version>1.1.0</version>
   <name>nuxeo-custom-beans-web</name>
   <description/>
   <dependencies>
