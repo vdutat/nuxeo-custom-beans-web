@@ -49,8 +49,9 @@ public class CustomConcurrentRequestResolver extends NuxeoConcurrentRequestResol
 			HttpServletResponse response) {
     	LOGGER.error("handleConcurrentRequest");
         if (request.getMethod().equalsIgnoreCase("get")) {
-        	LOGGER.error("handleConcurrentRequest GET");
             request.setAttribute(URLPolicyService.DISABLE_ACTION_BINDING_KEY, Boolean.TRUE);
+            // log an error instead of displaying a warning in the JSF UI
+            LOGGER.warn("This page may be not up to date, an other concurrent requests is still running");
             return true;
         } else {
         	return super.handleConcurrentRequest(ce, request, response);
